@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  namespace :api do
+    namespace :v1 do
+      post '/readings', to: 'readings#create'
+      get '/readings/:id/latest', to: 'readings#latest'
+      get '/readings/:id/cumulative_count', to: 'readings#cumulative'
+    end
+  end
 end
